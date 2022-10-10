@@ -10,12 +10,12 @@ const countryList = document.querySelector('.country-list')
 
 
 searchBox.addEventListener("input",  
-   foo => {
+  debounce( foo => {
         if (searchBox.value.length > 0) {
             search()
         }
     }
-    )
+  ), DEBOUNCE_DELAY)
 
     function search(e) {
         API.fetchCountries(searchBox.value.trim())
