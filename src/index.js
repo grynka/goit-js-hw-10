@@ -1,7 +1,7 @@
 import './css/styles.css';
 import Notiflix from 'notiflix';
 import debounce from 'lodash.debounce';
-import fetchCountries from './fetchCountries';
+import API from './fetchCountries';
 
 const DEBOUNCE_DELAY = 300;
 const searchBox = document.querySelector('#search-box');
@@ -18,7 +18,7 @@ searchBox.addEventListener("input",
     )
 
     function search(e) {
-        fetchCountries(searchBox.value.trim())
+        API.fetchCountries(searchBox.value.trim())
         .then(data => {
         if (data.length === 1) {
            country.innerHTML = `<p><img src="${data[0].flags.svg}" width="20"> <b>${data[0].name.official}</b></p>
